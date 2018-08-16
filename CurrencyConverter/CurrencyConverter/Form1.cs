@@ -10,11 +10,90 @@ using System.Windows.Forms;
 
 namespace CurrencyConverter
 {
-    public partial class Form1 : Form
+    public partial class CurrencyConvert : Form
     {
-        public Form1()
+        public string Basis_string;
+        public string Quote_string;
+        public decimal Rate_num;
+        public decimal LotSize_num;
+
+        public decimal PerPip_num;
+        public decimal Per100Pip_num;
+
+        public decimal LotAmount_num;
+        public decimal LeverageUsed_num;
+
+        public decimal MarginP;
+        public decimal Equity_num;
+
+        public string CurrencyPair_string;
+
+        public CurrencyConvert()
         {
             InitializeComponent();
+        }
+
+        private void Convert_Click(object sender, EventArgs e)
+        {
+            decimal.TryParse(LotAmount.Text, out LotAmount_num);
+            decimal.TryParse(Margin.Text, out MarginP);
+            decimal.TryParse(Equity.Text, out Equity_num);
+
+            if (Quote.Text == "JPY") { PerPip_num = ((decimal).01 / Rate_num) * LotSize_num * LotAmount_num; }
+            else { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num; }
+            Per100Pip_num = PerPip_num * 100;
+            Per_Pip.Text = PerPip_num.ToString();
+            Per_100_Pip.Text = Per100Pip_num.ToString();
+            CurrencyPair.Text = Basis_string + "/" + Quote_string;
+
+            LeverageUsed_num = LotAmount_num * LotSize_num / Equity_num;
+            LeverageUsed.Text = LeverageUsed_num.ToString(); 
+                 
+        }
+
+        private void Basis_TextChanged(object sender, EventArgs e)
+        {
+            Basis_string = Basis.Text;
+        }
+
+        private void Quote_TextChanged(object sender, EventArgs e)
+        {
+            Quote_string = Quote.Text;
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            Basis_string = "";
+            Quote_string = "";
+            Rate_num = 0;
+            LotSize_num = 0;
+
+            PerPip_num = 0;
+            Per100Pip_num = 0;
+
+            CurrencyPair_string = "";
+
+            Basis.Text = "";
+            Quote.Text = "";
+            Rate.Text = "";
+            Per_Pip.Text = "";
+            Per_100_Pip.Text = "";
+
+        }
+
+        private void Rate_TextChanged(object sender, EventArgs e)
+        {
+            decimal.TryParse(this.Rate.Text, out Rate_num);
+        }
+
+        private void CurrencyConvert_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LotSize_TextChanged(object sender, EventArgs e)
+        {
+            decimal.TryParse(this.LotSize.Text, out LotSize_num);
         }
     }
 }
