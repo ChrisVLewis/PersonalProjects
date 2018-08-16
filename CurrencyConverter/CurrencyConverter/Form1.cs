@@ -26,6 +26,9 @@ namespace CurrencyConverter
         public decimal MarginP;
         public decimal Equity_num;
 
+        public decimal StopLoss;
+        public decimal StopLossPips;
+
         public string CurrencyPair_string;
 
         public CurrencyConvert()
@@ -38,16 +41,23 @@ namespace CurrencyConverter
             decimal.TryParse(LotAmount.Text, out LotAmount_num);
             decimal.TryParse(Margin.Text, out MarginP);
             decimal.TryParse(Equity.Text, out Equity_num);
+            decimal.TryParse(Stop_Loss.Text, out StopLoss);
 
-            if (Quote.Text == "JPY") { PerPip_num = ((decimal).01 / Rate_num) * LotSize_num * LotAmount_num; }
-            else { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num; }
+            if (Quote.Text == "JPY" && Basis.Text == "USD") { PerPip_num = ((decimal).01 / Rate_num) * LotSize_num * LotAmount_num; }
+            else if (Basis.Text == "USD") { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num; }
+            else if (Quote.Text == "USD") { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num * Rate_num; }
             Per100Pip_num = PerPip_num * 100;
             Per_Pip.Text = PerPip_num.ToString();
             Per_100_Pip.Text = Per100Pip_num.ToString();
             CurrencyPair.Text = Basis_string + "/" + Quote_string;
 
+            StopLossPips = (StopLoss * (decimal)0.01 * Equity_num) / PerPip_num;
+            StopPip.Text = StopLossPips.ToString(); 
+
             LeverageUsed_num = LotAmount_num * LotSize_num / Equity_num;
             LeverageUsed.Text = LeverageUsed_num.ToString(); 
+
+
                  
         }
 

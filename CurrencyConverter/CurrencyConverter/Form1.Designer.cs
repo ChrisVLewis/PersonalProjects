@@ -52,6 +52,10 @@
             this.Margin = new System.Windows.Forms.TextBox();
             this.EquityLabel = new System.Windows.Forms.Label();
             this.Equity = new System.Windows.Forms.TextBox();
+            this.Stop_Losslabel = new System.Windows.Forms.Label();
+            this.Stop_Loss = new System.Windows.Forms.TextBox();
+            this.StopPipLabel = new System.Windows.Forms.Label();
+            this.StopPip = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Convert
@@ -82,7 +86,7 @@
             // 
             // Rate
             // 
-            this.Rate.Location = new System.Drawing.Point(48, 109);
+            this.Rate.Location = new System.Drawing.Point(48, 92);
             this.Rate.Name = "Rate";
             this.Rate.Size = new System.Drawing.Size(100, 20);
             this.Rate.TabIndex = 3;
@@ -90,21 +94,21 @@
             // 
             // Per_Pip
             // 
-            this.Per_Pip.Location = new System.Drawing.Point(305, 342);
+            this.Per_Pip.Location = new System.Drawing.Point(305, 348);
             this.Per_Pip.Name = "Per_Pip";
             this.Per_Pip.Size = new System.Drawing.Size(100, 20);
             this.Per_Pip.TabIndex = 4;
             // 
             // Per_100_Pip
             // 
-            this.Per_100_Pip.Location = new System.Drawing.Point(305, 387);
+            this.Per_100_Pip.Location = new System.Drawing.Point(305, 393);
             this.Per_100_Pip.Name = "Per_100_Pip";
             this.Per_100_Pip.Size = new System.Drawing.Size(100, 20);
             this.Per_100_Pip.TabIndex = 5;
             // 
             // LotSize
             // 
-            this.LotSize.Location = new System.Drawing.Point(165, 109);
+            this.LotSize.Location = new System.Drawing.Point(165, 92);
             this.LotSize.Name = "LotSize";
             this.LotSize.Size = new System.Drawing.Size(100, 20);
             this.LotSize.TabIndex = 6;
@@ -131,7 +135,7 @@
             // RateLabel
             // 
             this.RateLabel.AutoSize = true;
-            this.RateLabel.Location = new System.Drawing.Point(80, 93);
+            this.RateLabel.Location = new System.Drawing.Point(80, 76);
             this.RateLabel.Name = "RateLabel";
             this.RateLabel.Size = new System.Drawing.Size(30, 13);
             this.RateLabel.TabIndex = 9;
@@ -140,7 +144,7 @@
             // LotSizeLabel
             // 
             this.LotSizeLabel.AutoSize = true;
-            this.LotSizeLabel.Location = new System.Drawing.Point(197, 93);
+            this.LotSizeLabel.Location = new System.Drawing.Point(197, 76);
             this.LotSizeLabel.Name = "LotSizeLabel";
             this.LotSizeLabel.Size = new System.Drawing.Size(42, 13);
             this.LotSizeLabel.TabIndex = 10;
@@ -149,7 +153,7 @@
             // PerPipLabel
             // 
             this.PerPipLabel.AutoSize = true;
-            this.PerPipLabel.Location = new System.Drawing.Point(334, 326);
+            this.PerPipLabel.Location = new System.Drawing.Point(334, 332);
             this.PerPipLabel.Name = "PerPipLabel";
             this.PerPipLabel.Size = new System.Drawing.Size(38, 13);
             this.PerPipLabel.TabIndex = 11;
@@ -158,7 +162,7 @@
             // Per100PipLabel
             // 
             this.Per100PipLabel.AutoSize = true;
-            this.Per100PipLabel.Location = new System.Drawing.Point(325, 371);
+            this.Per100PipLabel.Location = new System.Drawing.Point(325, 377);
             this.Per100PipLabel.Name = "Per100PipLabel";
             this.Per100PipLabel.Size = new System.Drawing.Size(56, 13);
             this.Per100PipLabel.TabIndex = 12;
@@ -166,7 +170,7 @@
             // 
             // CurrencyPair
             // 
-            this.CurrencyPair.Location = new System.Drawing.Point(305, 286);
+            this.CurrencyPair.Location = new System.Drawing.Point(305, 303);
             this.CurrencyPair.Name = "CurrencyPair";
             this.CurrencyPair.Size = new System.Drawing.Size(100, 20);
             this.CurrencyPair.TabIndex = 13;
@@ -174,7 +178,7 @@
             // CurrencyPairLabel
             // 
             this.CurrencyPairLabel.AutoSize = true;
-            this.CurrencyPairLabel.Location = new System.Drawing.Point(324, 266);
+            this.CurrencyPairLabel.Location = new System.Drawing.Point(324, 283);
             this.CurrencyPairLabel.Name = "CurrencyPairLabel";
             this.CurrencyPairLabel.Size = new System.Drawing.Size(67, 13);
             this.CurrencyPairLabel.TabIndex = 14;
@@ -192,7 +196,7 @@
             // 
             // LeverageUsed
             // 
-            this.LeverageUsed.Location = new System.Drawing.Point(305, 438);
+            this.LeverageUsed.Location = new System.Drawing.Point(305, 444);
             this.LeverageUsed.Name = "LeverageUsed";
             this.LeverageUsed.Size = new System.Drawing.Size(100, 20);
             this.LeverageUsed.TabIndex = 17;
@@ -200,7 +204,7 @@
             // LeverageLabel
             // 
             this.LeverageLabel.AutoSize = true;
-            this.LeverageLabel.Location = new System.Drawing.Point(314, 422);
+            this.LeverageLabel.Location = new System.Drawing.Point(314, 428);
             this.LeverageLabel.Name = "LeverageLabel";
             this.LeverageLabel.Size = new System.Drawing.Size(80, 13);
             this.LeverageLabel.TabIndex = 19;
@@ -209,7 +213,7 @@
             // LotAmountLabel
             // 
             this.LotAmountLabel.AutoSize = true;
-            this.LotAmountLabel.Location = new System.Drawing.Point(325, 93);
+            this.LotAmountLabel.Location = new System.Drawing.Point(301, 76);
             this.LotAmountLabel.Name = "LotAmountLabel";
             this.LotAmountLabel.Size = new System.Drawing.Size(58, 13);
             this.LotAmountLabel.TabIndex = 21;
@@ -217,7 +221,7 @@
             // 
             // LotAmount
             // 
-            this.LotAmount.Location = new System.Drawing.Point(305, 109);
+            this.LotAmount.Location = new System.Drawing.Point(281, 92);
             this.LotAmount.Name = "LotAmount";
             this.LotAmount.Size = new System.Drawing.Size(100, 20);
             this.LotAmount.TabIndex = 20;
@@ -225,7 +229,7 @@
             // MarginLabel
             // 
             this.MarginLabel.AutoSize = true;
-            this.MarginLabel.Location = new System.Drawing.Point(324, 25);
+            this.MarginLabel.Location = new System.Drawing.Point(300, 25);
             this.MarginLabel.Name = "MarginLabel";
             this.MarginLabel.Size = new System.Drawing.Size(56, 13);
             this.MarginLabel.TabIndex = 23;
@@ -233,7 +237,7 @@
             // 
             // Margin
             // 
-            this.Margin.Location = new System.Drawing.Point(305, 45);
+            this.Margin.Location = new System.Drawing.Point(281, 45);
             this.Margin.Name = "Margin";
             this.Margin.Size = new System.Drawing.Size(100, 20);
             this.Margin.TabIndex = 22;
@@ -241,7 +245,7 @@
             // EquityLabel
             // 
             this.EquityLabel.AutoSize = true;
-            this.EquityLabel.Location = new System.Drawing.Point(76, 147);
+            this.EquityLabel.Location = new System.Drawing.Point(76, 124);
             this.EquityLabel.Name = "EquityLabel";
             this.EquityLabel.Size = new System.Drawing.Size(36, 13);
             this.EquityLabel.TabIndex = 25;
@@ -249,16 +253,52 @@
             // 
             // Equity
             // 
-            this.Equity.Location = new System.Drawing.Point(48, 163);
+            this.Equity.Location = new System.Drawing.Point(48, 140);
             this.Equity.Name = "Equity";
             this.Equity.Size = new System.Drawing.Size(100, 20);
             this.Equity.TabIndex = 24;
+            // 
+            // Stop_Losslabel
+            // 
+            this.Stop_Losslabel.AutoSize = true;
+            this.Stop_Losslabel.Location = new System.Drawing.Point(180, 124);
+            this.Stop_Losslabel.Name = "Stop_Losslabel";
+            this.Stop_Losslabel.Size = new System.Drawing.Size(71, 13);
+            this.Stop_Losslabel.TabIndex = 27;
+            this.Stop_Losslabel.Text = "Stop-Loss (%)";
+            // 
+            // Stop_Loss
+            // 
+            this.Stop_Loss.Location = new System.Drawing.Point(165, 140);
+            this.Stop_Loss.Name = "Stop_Loss";
+            this.Stop_Loss.Size = new System.Drawing.Size(100, 20);
+            this.Stop_Loss.TabIndex = 26;
+            // 
+            // StopPipLabel
+            // 
+            this.StopPipLabel.AutoSize = true;
+            this.StopPipLabel.Location = new System.Drawing.Point(197, 283);
+            this.StopPipLabel.Name = "StopPipLabel";
+            this.StopPipLabel.Size = new System.Drawing.Size(71, 13);
+            this.StopPipLabel.TabIndex = 29;
+            this.StopPipLabel.Text = "Stop-Loss (Pips)";
+            // 
+            // StopPip
+            // 
+            this.StopPip.Location = new System.Drawing.Point(183, 303);
+            this.StopPip.Name = "StopPip";
+            this.StopPip.Size = new System.Drawing.Size(100, 20);
+            this.StopPip.TabIndex = 28;
             // 
             // CurrencyConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 519);
+            this.Controls.Add(this.StopPipLabel);
+            this.Controls.Add(this.StopPip);
+            this.Controls.Add(this.Stop_Losslabel);
+            this.Controls.Add(this.Stop_Loss);
             this.Controls.Add(this.EquityLabel);
             this.Controls.Add(this.Equity);
             this.Controls.Add(this.MarginLabel);
@@ -317,6 +357,10 @@
         private System.Windows.Forms.TextBox Margin;
         private System.Windows.Forms.Label EquityLabel;
         private System.Windows.Forms.TextBox Equity;
+        private System.Windows.Forms.Label Stop_Losslabel;
+        private System.Windows.Forms.TextBox Stop_Loss;
+        private System.Windows.Forms.Label StopPipLabel;
+        private System.Windows.Forms.TextBox StopPip;
     }
 }
 
