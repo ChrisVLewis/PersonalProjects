@@ -56,6 +56,12 @@
             this.Stop_Loss = new System.Windows.Forms.TextBox();
             this.StopPipLabel = new System.Windows.Forms.Label();
             this.StopPip = new System.Windows.Forms.TextBox();
+            this.StopPipLevelLabel = new System.Windows.Forms.Label();
+            this.StopPipLevel = new System.Windows.Forms.TextBox();
+            this.RewardRatioLabel = new System.Windows.Forms.Label();
+            this.RewardRatio = new System.Windows.Forms.TextBox();
+            this.TakeProfitLevelLabel = new System.Windows.Forms.Label();
+            this.TakeProfitLevel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Convert
@@ -74,7 +80,6 @@
             this.Basis.Name = "Basis";
             this.Basis.Size = new System.Drawing.Size(100, 20);
             this.Basis.TabIndex = 1;
-            this.Basis.TextChanged += new System.EventHandler(this.Basis_TextChanged);
             // 
             // Quote
             // 
@@ -82,7 +87,6 @@
             this.Quote.Name = "Quote";
             this.Quote.Size = new System.Drawing.Size(100, 20);
             this.Quote.TabIndex = 2;
-            this.Quote.TextChanged += new System.EventHandler(this.Quote_TextChanged);
             // 
             // Rate
             // 
@@ -90,7 +94,6 @@
             this.Rate.Name = "Rate";
             this.Rate.Size = new System.Drawing.Size(100, 20);
             this.Rate.TabIndex = 3;
-            this.Rate.TextChanged += new System.EventHandler(this.Rate_TextChanged);
             // 
             // Per_Pip
             // 
@@ -112,7 +115,6 @@
             this.LotSize.Name = "LotSize";
             this.LotSize.Size = new System.Drawing.Size(100, 20);
             this.LotSize.TabIndex = 6;
-            this.LotSize.TextChanged += new System.EventHandler(this.LotSize_TextChanged);
             // 
             // BasisLabel
             // 
@@ -279,7 +281,7 @@
             this.StopPipLabel.AutoSize = true;
             this.StopPipLabel.Location = new System.Drawing.Point(197, 283);
             this.StopPipLabel.Name = "StopPipLabel";
-            this.StopPipLabel.Size = new System.Drawing.Size(71, 13);
+            this.StopPipLabel.Size = new System.Drawing.Size(83, 13);
             this.StopPipLabel.TabIndex = 29;
             this.StopPipLabel.Text = "Stop-Loss (Pips)";
             // 
@@ -290,11 +292,65 @@
             this.StopPip.Size = new System.Drawing.Size(100, 20);
             this.StopPip.TabIndex = 28;
             // 
+            // StopPipLevelLabel
+            // 
+            this.StopPipLevelLabel.AutoSize = true;
+            this.StopPipLevelLabel.Location = new System.Drawing.Point(197, 328);
+            this.StopPipLevelLabel.Name = "StopPipLevelLabel";
+            this.StopPipLevelLabel.Size = new System.Drawing.Size(83, 13);
+            this.StopPipLevelLabel.TabIndex = 31;
+            this.StopPipLevelLabel.Text = "Stop-Loss Level";
+            // 
+            // StopPipLevel
+            // 
+            this.StopPipLevel.Location = new System.Drawing.Point(183, 348);
+            this.StopPipLevel.Name = "StopPipLevel";
+            this.StopPipLevel.Size = new System.Drawing.Size(100, 20);
+            this.StopPipLevel.TabIndex = 30;
+            // 
+            // RewardRatioLabel
+            // 
+            this.RewardRatioLabel.AutoSize = true;
+            this.RewardRatioLabel.Location = new System.Drawing.Point(295, 120);
+            this.RewardRatioLabel.Name = "RewardRatioLabel";
+            this.RewardRatioLabel.Size = new System.Drawing.Size(72, 13);
+            this.RewardRatioLabel.TabIndex = 33;
+            this.RewardRatioLabel.Text = "Reward Ratio";
+            // 
+            // RewardRatio
+            // 
+            this.RewardRatio.Location = new System.Drawing.Point(281, 140);
+            this.RewardRatio.Name = "RewardRatio";
+            this.RewardRatio.Size = new System.Drawing.Size(100, 20);
+            this.RewardRatio.TabIndex = 32;
+            // 
+            // TakeProfitLevelLabel
+            // 
+            this.TakeProfitLevelLabel.AutoSize = true;
+            this.TakeProfitLevelLabel.Location = new System.Drawing.Point(192, 377);
+            this.TakeProfitLevelLabel.Name = "TakeProfitLevelLabel";
+            this.TakeProfitLevelLabel.Size = new System.Drawing.Size(88, 13);
+            this.TakeProfitLevelLabel.TabIndex = 35;
+            this.TakeProfitLevelLabel.Text = "Take Profit Level";
+            // 
+            // TakeProfitLevel
+            // 
+            this.TakeProfitLevel.Location = new System.Drawing.Point(183, 393);
+            this.TakeProfitLevel.Name = "TakeProfitLevel";
+            this.TakeProfitLevel.Size = new System.Drawing.Size(100, 20);
+            this.TakeProfitLevel.TabIndex = 34;
+            // 
             // CurrencyConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 519);
+            this.Controls.Add(this.TakeProfitLevelLabel);
+            this.Controls.Add(this.TakeProfitLevel);
+            this.Controls.Add(this.RewardRatioLabel);
+            this.Controls.Add(this.RewardRatio);
+            this.Controls.Add(this.StopPipLevelLabel);
+            this.Controls.Add(this.StopPipLevel);
             this.Controls.Add(this.StopPipLabel);
             this.Controls.Add(this.StopPip);
             this.Controls.Add(this.Stop_Losslabel);
@@ -325,7 +381,6 @@
             this.Controls.Add(this.LotSize);
             this.Name = "CurrencyConvert";
             this.Text = "CurrencyConvert";
-            this.Load += new System.EventHandler(this.CurrencyConvert_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,6 +416,12 @@
         private System.Windows.Forms.TextBox Stop_Loss;
         private System.Windows.Forms.Label StopPipLabel;
         private System.Windows.Forms.TextBox StopPip;
+        private System.Windows.Forms.Label StopPipLevelLabel;
+        private System.Windows.Forms.TextBox StopPipLevel;
+        private System.Windows.Forms.Label RewardRatioLabel;
+        private System.Windows.Forms.TextBox RewardRatio;
+        private System.Windows.Forms.Label TakeProfitLevelLabel;
+        private System.Windows.Forms.TextBox TakeProfitLevel;
     }
 }
 

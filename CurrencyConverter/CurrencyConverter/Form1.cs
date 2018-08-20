@@ -28,6 +28,10 @@ namespace CurrencyConverter
 
         public decimal StopLoss;
         public decimal StopLossPips;
+        public decimal StopLossLevel;
+
+        public decimal TakeProfitLevel_num;
+        public decimal RewardRatio_num;
 
         public string CurrencyPair_string;
 
@@ -38,10 +42,15 @@ namespace CurrencyConverter
 
         private void Convert_Click(object sender, EventArgs e)
         {
+            Basis_string = Basis.Text;
+            Quote_string = Quote.Text;
+            decimal.TryParse(this.Rate.Text, out Rate_num);
+            decimal.TryParse(this.LotSize.Text, out LotSize_num);
             decimal.TryParse(LotAmount.Text, out LotAmount_num);
             decimal.TryParse(Margin.Text, out MarginP);
             decimal.TryParse(Equity.Text, out Equity_num);
             decimal.TryParse(Stop_Loss.Text, out StopLoss);
+            decimal.TryParse(RewardRatio.Text, out RewardRatio_num);
 
             if (Quote.Text == "JPY" && Basis.Text == "USD") { PerPip_num = ((decimal).01 / Rate_num) * LotSize_num * LotAmount_num; }
             else if (Basis.Text == "USD") { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num; }
@@ -52,23 +61,27 @@ namespace CurrencyConverter
             CurrencyPair.Text = Basis_string + "/" + Quote_string;
 
             StopLossPips = (StopLoss * (decimal)0.01 * Equity_num) / PerPip_num;
-            StopPip.Text = StopLossPips.ToString(); 
+
+            if (Quote.Text == "JPY" && Basis.Text == "USD")
+            {
+                StopLossLevel = Rate_num - (StopLossPips * (decimal)0.01);
+                TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.01 * RewardRatio_num);
+            }
+            else
+            {
+                StopLossLevel = Rate_num - (StopLossPips * (decimal)0.0001);
+                TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.0001 * RewardRatio_num);
+            }
+            StopPip.Text = StopLossPips.ToString();
+            StopPipLevel.Text = StopLossLevel.ToString();
+            TakeProfitLevel.Text = TakeProfitLevel_num.ToString();
 
             LeverageUsed_num = LotAmount_num * LotSize_num / Equity_num;
             LeverageUsed.Text = LeverageUsed_num.ToString(); 
 
 
+
                  
-        }
-
-        private void Basis_TextChanged(object sender, EventArgs e)
-        {
-            Basis_string = Basis.Text;
-        }
-
-        private void Quote_TextChanged(object sender, EventArgs e)
-        {
-            Quote_string = Quote.Text;
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -89,21 +102,26 @@ namespace CurrencyConverter
             Per_Pip.Text = "";
             Per_100_Pip.Text = "";
 
-        }
 
-        private void Rate_TextChanged(object sender, EventArgs e)
-        {
-            decimal.TryParse(this.Rate.Text, out Rate_num);
-        }
 
-        private void CurrencyConvert_Load(object sender, EventArgs e)
-        {
+            LotAmount_num = 0;
+            LeverageUsed_num = 0;
 
-        }
+            MarginP = 0;
+            Equity_num = 0;
 
-        private void LotSize_TextChanged(object sender, EventArgs e)
-        {
-            decimal.TryParse(this.LotSize.Text, out LotSize_num);
-        }
+            StopLoss = 0;
+            StopLossPips = 0;
+            StopLossLevel = 0;
+
+            TakeProfitLevel_num = 0;
+            RewardRatio_num = 0;
+
+            CurrencyPair_string = "";
+
+         }
+
+
+
     }
 }
