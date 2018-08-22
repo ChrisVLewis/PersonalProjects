@@ -35,6 +35,9 @@ namespace CurrencyConverter
 
         public string CurrencyPair_string;
 
+        public bool Long_B;
+        public bool Short_B;
+
         public CurrencyConvert()
         {
             InitializeComponent();
@@ -62,15 +65,30 @@ namespace CurrencyConverter
 
             StopLossPips = (StopLoss * (decimal)0.01 * Equity_num) / PerPip_num;
 
-            if (Quote.Text == "JPY" && Basis.Text == "USD")
+            if (Long_B)
             {
-                StopLossLevel = Rate_num - (StopLossPips * (decimal)0.01);
-                TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.01 * RewardRatio_num);
-            }
-            else
+                if (Quote.Text == "JPY" && Basis.Text == "USD")
+                {
+                    StopLossLevel = Rate_num - (StopLossPips * (decimal)0.01);
+                    TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.01 * RewardRatio_num);
+                }
+                else
+                {
+                    StopLossLevel = Rate_num - (StopLossPips * (decimal)0.0001);
+                    TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.0001 * RewardRatio_num);
+                }
+            } else if(Short_B)
             {
-                StopLossLevel = Rate_num - (StopLossPips * (decimal)0.0001);
-                TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.0001 * RewardRatio_num);
+                if (Quote.Text == "JPY" && Basis.Text == "USD")
+                {
+                    StopLossLevel = Rate_num + (StopLossPips * (decimal)0.01);
+                    TakeProfitLevel_num = Rate_num - (StopLossPips * (decimal)0.01 * RewardRatio_num);
+                }
+                else
+                {
+                    StopLossLevel = Rate_num + (StopLossPips * (decimal)0.0001);
+                    TakeProfitLevel_num = Rate_num - (StopLossPips * (decimal)0.0001 * RewardRatio_num);
+                }
             }
             StopPip.Text = StopLossPips.ToString();
             StopPipLevel.Text = StopLossLevel.ToString();
@@ -121,7 +139,16 @@ namespace CurrencyConverter
 
          }
 
+        private void Long_CheckedChanged(object sender, EventArgs e)
+        {
+            Long_B = true;
+            Short_B = false;
+        }
 
-
+        private void Short_CheckedChanged(object sender, EventArgs e)
+        {
+            Long_B = false;
+            Short_B = true;
+        }
     }
 }

@@ -62,6 +62,8 @@
             this.RewardRatio = new System.Windows.Forms.TextBox();
             this.TakeProfitLevelLabel = new System.Windows.Forms.Label();
             this.TakeProfitLevel = new System.Windows.Forms.TextBox();
+            this.Short = new System.Windows.Forms.RadioButton();
+            this.Long = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // Convert
@@ -340,11 +342,37 @@
             this.TakeProfitLevel.Size = new System.Drawing.Size(100, 20);
             this.TakeProfitLevel.TabIndex = 34;
             // 
+            // Short
+            // 
+            this.Short.AutoSize = true;
+            this.Short.Location = new System.Drawing.Point(197, 214);
+            this.Short.Name = "Short";
+            this.Short.Size = new System.Drawing.Size(85, 17);
+            this.Short.TabIndex = 36;
+            this.Short.TabStop = true;
+            this.Short.Text = "Short";
+            this.Short.UseVisualStyleBackColor = true;
+            this.Short.CheckedChanged += new System.EventHandler(this.Short_CheckedChanged);
+            // 
+            // Long
+            // 
+            this.Long.AutoSize = true;
+            this.Long.Location = new System.Drawing.Point(317, 214);
+            this.Long.Name = "Long";
+            this.Long.Size = new System.Drawing.Size(49, 17);
+            this.Long.TabIndex = 37;
+            this.Long.TabStop = true;
+            this.Long.Text = "Long";
+            this.Long.UseVisualStyleBackColor = true;
+            this.Long.CheckedChanged += new System.EventHandler(this.Long_CheckedChanged);
+            // 
             // CurrencyConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 519);
+            this.Controls.Add(this.Long);
+            this.Controls.Add(this.Short);
             this.Controls.Add(this.TakeProfitLevelLabel);
             this.Controls.Add(this.TakeProfitLevel);
             this.Controls.Add(this.RewardRatioLabel);
@@ -422,6 +450,8 @@
         private System.Windows.Forms.TextBox RewardRatio;
         private System.Windows.Forms.Label TakeProfitLevelLabel;
         private System.Windows.Forms.TextBox TakeProfitLevel;
+        private System.Windows.Forms.RadioButton Short;
+        private System.Windows.Forms.RadioButton Long;
     }
 }
 
