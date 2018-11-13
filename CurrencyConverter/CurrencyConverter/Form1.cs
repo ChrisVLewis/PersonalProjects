@@ -55,7 +55,7 @@ namespace CurrencyConverter
             decimal.TryParse(Stop_Loss.Text, out StopLoss);
             decimal.TryParse(RewardRatio.Text, out RewardRatio_num);
 
-            if (Quote.Text == "JPY" && Basis.Text == "USD") { PerPip_num = ((decimal).01 / Rate_num) * LotSize_num * LotAmount_num; }
+            if (Quote.Text == "JPY") { PerPip_num = ((decimal).01 / Rate_num) * LotSize_num * LotAmount_num; }
             else if (Basis.Text == "USD") { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num; }
             else if (Quote.Text == "USD") { PerPip_num = ((decimal).0001 / Rate_num) * LotSize_num * LotAmount_num * Rate_num; }
             Per100Pip_num = PerPip_num * 100;
@@ -67,7 +67,7 @@ namespace CurrencyConverter
 
             if (Long_B)
             {
-                if (Quote.Text == "JPY" && Basis.Text == "USD")
+                if (Quote.Text == "JPY" )
                 {
                     StopLossLevel = Rate_num - (StopLossPips * (decimal)0.01);
                     TakeProfitLevel_num = Rate_num + (StopLossPips * (decimal)0.01 * RewardRatio_num);
