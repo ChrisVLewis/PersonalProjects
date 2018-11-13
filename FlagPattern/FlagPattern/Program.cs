@@ -95,7 +95,7 @@ namespace FlagPattern
                     result += "[RetracePercent]: " + retracepercent + ",";
                     result += "[TrendStart]: " + trendlowindex + " [TrendEnd]: " + trendhighindex + ",";
                     result += "[RetraceStart]: " + retracehighindex + " [RetraceEnd]: " + retracelowindex + ",";
-                    result += "[TrendStart]: " + breakoutlowindex + " [TrendEnd]: " + breakouthighindex + ",";
+                    result += "[TrendStart]: " + breakoutlowindex + " [TrendEnd]: " + breakouthighindex + " ";
                     resultList.Add(result);
                 }
             }
